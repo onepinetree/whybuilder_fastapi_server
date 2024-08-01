@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from urllib.parse import unquote
 import uvicorn
 from pydantic import BaseModel
-
+import os
 
 app = FastAPI()
 
@@ -27,6 +27,9 @@ def modify_link(model: Model):
 
     return {"modified_url": modified_link}
 
+#로컬환경 설정
+# if __name__ == "__main__":
+#     uvicorn.run(app, host="127.0.0.1", port=8000)
+
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=int(os.getenv("PORT", 8000)))
