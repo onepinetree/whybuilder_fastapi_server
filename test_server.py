@@ -12,7 +12,7 @@ class Model(BaseModel):
     url: str
 
 
-@app.get("/items")
+@app.get("/modified_link")
 def modify_link(model: Model):
 
     base_link: str = model.url
